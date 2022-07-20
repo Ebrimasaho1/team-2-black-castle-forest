@@ -13,4 +13,19 @@ class Controller {
 
     }
 
+    private static void commandsInstructions() {
+        System.out.println();
+        System.out.println("Game commands");
+        System.out.println("---------------------------------------------");
+        System.out.println("** 'Move' --> directions [e.g move south] **" +
+                "\n** 'go'   --> directions [e.g go north] **" +
+                "\n** 'look' --> current location **" +
+                "\n** 'get'  --> get item [e.g get key] **" +
+                "\n** 'use'  --> use item [e.g use key] **" +
+                "\n** 'fight'--> initiate combat **" +
+                "\n** 'teleport' --> Take you to a random location **" +
+                "\n** '?' --> help **");
+        System.out.println("-----------------------------------------------");
+    }
+
 }
