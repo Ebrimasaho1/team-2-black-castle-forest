@@ -2,6 +2,11 @@ package com.blackforestcastle;
 
 class Controller {
 
+    public static void main(String[] args) {
+        basic_info();
+        commandsInstructions();
+    }
+
 
 
     private static void basic_info() {
@@ -11,6 +16,21 @@ class Controller {
         + "\nYou walk into the castle with the hope of exploring its beauty and all of a sudden, you are trapped and cannot escape"
         + "\nYou shout for help but no one can hear you and now it is up to you to escape the castle alive by whatever means necessary");
 
+    }
+
+    private static void commandsInstructions() {
+        System.out.println();
+        System.out.println("Game commands");
+        System.out.println("---------------------------------------------");
+        System.out.println("** 'Move' --> directions [e.g move south] **" +
+                "\n** 'go'   --> directions [e.g go north] **" +
+                "\n** 'look' --> current location **" +
+                "\n** 'get'  --> get item [e.g get key] **" +
+                "\n** 'use'  --> use item [e.g use key] **" +
+                "\n** 'fight'--> initiate combat **" +
+                "\n** 'teleport' --> Take you to a random location **" +
+                "\n** '?' --> help **");
+        System.out.println("-----------------------------------------------");
     }
 
 }
