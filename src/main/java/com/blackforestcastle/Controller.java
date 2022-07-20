@@ -3,7 +3,7 @@ package com.blackforestcastle;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.concurrent.TimeUnit;
+import java.nio.file.Paths;
 
 public class Controller {
     private boolean gameRunning;
@@ -23,6 +23,13 @@ public class Controller {
 
     void gameLoop() {
         Commands commands = new Commands();
+        try {
+            welcome();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         basic_info();
         commandsInstructions();
@@ -41,10 +48,16 @@ public class Controller {
     }
 
     private static void welcome() throws IOException, InterruptedException {
-        String welcomeBanner = Files.readString(Path.of("Resources", "Title"));
-        System.out.println("Welcome To: \n");
-        TimeUnit.MILLISECONDS.sleep(1500);
-        System.out.println(welcomeBanner);
+        Path filepath = Paths.get("./src/main/java/resources/title.txt");
+
+        try {
+            String welcomeBanner = Files.readString(filepath);
+            System.out.println("Welcome To: \n");
+            System.out.println(welcomeBanner);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void commandsInstructions() {
