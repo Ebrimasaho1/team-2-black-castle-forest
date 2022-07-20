@@ -5,10 +5,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
-class Controller {
+public class Controller {
+    boolean gameRunning = true;
 
+    void gameLoop() {
+        Commands commands = new Commands();
 
-    private static void basic_info() {
+        basic_info();
+        while (gameRunning) {
+            commands.interact();
+        }
+    }
+    
+    private void basic_info() {
         System.out.println();
         System.out.println("You are an avid hiker, exploring a new trail on a weekend. You lose your footing and stumble down the hill."
                 + "\nWhen you get up and regain your bearing, you look up and see a castle with beautiful artistic design and lightning."
@@ -17,19 +26,14 @@ class Controller {
 
     }
 
-    ;
-
-
     private static void welcome() throws IOException, InterruptedException {
         String welcomeBanner = Files.readString(Path.of("Resources", "Title"));
         System.out.println("Welcome To: \n");
         TimeUnit.MILLISECONDS.sleep(1500);
         System.out.println(welcomeBanner);
-
-
     }
 
-    private static void commandsInstructions() {
+    public void commandsInstructions() {
         System.out.println();
         System.out.println("Game commands");
         System.out.println("---------------------------------------------");
@@ -44,4 +48,12 @@ class Controller {
         System.out.println("-----------------------------------------------");
     }
 
+    public void quitGame() {
+        System.out.println("Thanks for playing!");
+        gameRunning = false;
+    }
+
+    public void newGame() {
+        gameLoop();
+    }
 }

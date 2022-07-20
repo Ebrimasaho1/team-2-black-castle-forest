@@ -4,17 +4,20 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Commands {
+    Controller controller = new Controller();
 
 
     //Parse input text and return as an array split into verb and noun
     String[] input() {
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
 
-        System.out.print(">>");
-        return scanner.nextLine().split(" ");  // Read user input and split into an array based off of regex.
+        System.out.println(">>");
+        String input = scanner.nextLine();
+        return input.split(" ");  // Read user input and split into an array based off of regex.
     }
 
     public void interact() {
+        System.out.println("What would you like to do?");
         String[] input = input();
         String verb = input[0].toLowerCase();
         String noun = input[1].toLowerCase();
@@ -38,6 +41,14 @@ public class Commands {
             case "?":
                 help();
                 break;
+            case "quit":
+                controller.quitGame();
+                break;
+            case "new":
+                controller.newGame();
+                break;
+            default:
+                controller.commandsInstructions();
         }
     }
 
