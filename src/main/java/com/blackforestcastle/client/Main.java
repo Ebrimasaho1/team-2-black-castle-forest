@@ -1,5 +1,9 @@
 package com.blackforestcastle.client;
 
-class Main {
+import com.blackforestcastle.Commands;
 
+class Main {
+    public static void main(String[] args) {
+
+    }
 }
