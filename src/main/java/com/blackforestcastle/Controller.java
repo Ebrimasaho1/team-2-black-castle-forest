@@ -1,10 +1,20 @@
 package com.blackforestcastle;
 
-class Controller {
+public class Controller {
+    boolean gameRunning = true;
+
+    void gameLoop() {
+        Commands commands = new Commands();
+
+        basic_info();
+        while (gameRunning) {
+            commands.interact();
+        }
+    }
 
 
 
-    private static void basic_info() {
+    private void basic_info() {
         System.out.println();
         System.out.println("You are an avid hiker, exploring a new trail on a weekend. You lose your footing and stumble down the hill."
         + "\nWhen you get up and regain your bearing, you look up and see a castle with beautiful artistic design and lightning."
@@ -13,7 +23,7 @@ class Controller {
 
     }
 
-    private static void commandsInstructions() {
+    public void commandsInstructions() {
         System.out.println();
         System.out.println("Game commands");
         System.out.println("---------------------------------------------");
@@ -28,4 +38,12 @@ class Controller {
         System.out.println("-----------------------------------------------");
     }
 
+    public void quitGame() {
+        System.out.println("Thanks for playing!");
+        gameRunning = false;
+    }
+
+    public void newGame() {
+        gameLoop();
+    }
 }
