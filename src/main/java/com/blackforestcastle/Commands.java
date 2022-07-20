@@ -4,14 +4,14 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Commands {
-    Controller controller = new Controller();
+    Controller controller = Controller.getInstance();
 
 
     //Parse input text and return as an array split into verb and noun
     String[] input() {
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
 
-        System.out.println(">>");
+        System.out.print(">>");
         String input = scanner.nextLine();
         return input.split(" ");  // Read user input and split into an array based off of regex.
     }

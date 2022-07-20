@@ -6,12 +6,26 @@ import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
 public class Controller {
-    boolean gameRunning = true;
+    private boolean gameRunning;
+
+    private static Controller controller_instance = null;
+
+    private Controller() {
+        gameRunning = true;
+    }
+
+    public static Controller getInstance() {
+        if (controller_instance == null){
+            controller_instance = new Controller();
+        }
+        return controller_instance;
+    }
 
     void gameLoop() {
         Commands commands = new Commands();
 
         basic_info();
+        commandsInstructions();
         while (gameRunning) {
             commands.interact();
         }

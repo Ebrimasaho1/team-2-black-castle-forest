@@ -5,7 +5,7 @@ import com.blackforestcastle.Controller;
 
 class Main {
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        Controller controller = Controller.getInstance();
         controller.newGame();
     }
 }
