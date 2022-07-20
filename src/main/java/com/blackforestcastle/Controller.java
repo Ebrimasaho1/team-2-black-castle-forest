@@ -2,11 +2,6 @@ package com.blackforestcastle;
 
 class Controller {
 
-    public static void main(String[] args) {
-        basic_info();
-        commandsInstructions();
-    }
-
 
 
     private static void basic_info() {
