@@ -1,5 +1,7 @@
 package com.blackforestcastle;
 
+import com.google.gson.Gson;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -13,14 +15,28 @@ public class Commands {
 
         System.out.print(">>");
         String input = scanner.nextLine();
-        return input.split(" ");  // Read user input and split into an array based off of regex.
+
+        String[] splitInput = input.split(" ");// Read user input and split into an array based off of regex.
+        return splitInput;
     }
 
     public void interact() {
         System.out.println("What would you like to do?");
         String[] input = input();
-        String verb = input[0].toLowerCase();
-        String noun = input[1].toLowerCase();
+        String verb = "";
+        String noun = "";
+        if (input.length == 1){
+            verb = input[0].toLowerCase();
+        }
+        else if (input.length == 2){
+            verb = input[0].toLowerCase();
+            noun = input[1].toLowerCase();
+        }
+        else {
+            System.out.println("Please enter a valid command, such as: ");
+            controller.commandsInstructions();
+            return;
+        }
 
         switch (verb) {
             case "go":
