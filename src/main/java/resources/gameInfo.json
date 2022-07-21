@@ -1,0 +1,9 @@
+[
+  {
+    "info" : "Game commands\n ---------------------------------------------\n ** 'Move' --> directions [e.g move south] **\n ** 'go'   --> directions [e.g go north] *\n ** 'look' --> current location **\n ** 'get'  --> get item [e.g get key] **\n ** 'use'  --> use item [e.g use key] **\n ** 'fight'--> initiate combat **\n ** 'teleport' --> Take you to a random location **\n ** '?' --> help **\n ----------------------------------------------- "
+  }
+
+
+
+
+]
