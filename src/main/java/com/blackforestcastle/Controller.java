@@ -23,14 +23,7 @@ public class Controller {
 
     void gameLoop() {
         Commands commands = new Commands();
-        try {
-            welcome();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        welcome();
         basic_info();
         commandsInstructions();
         while (gameRunning) {
@@ -47,7 +40,7 @@ public class Controller {
 
     }
 
-    private static void welcome() throws IOException, InterruptedException {
+    private void welcome() {
         Path filepath = Paths.get("./src/main/java/resources/title.txt");
 
         try {

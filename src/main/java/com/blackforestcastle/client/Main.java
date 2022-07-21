@@ -1,6 +1,5 @@
 package com.blackforestcastle.client;
 
-import com.blackforestcastle.Commands;
 import com.blackforestcastle.Controller;
 
 class Main {
