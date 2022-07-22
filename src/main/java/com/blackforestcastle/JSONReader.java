@@ -45,7 +45,7 @@ public class JSONReader {
     */
 
     // this method parses the rooms.json folder and returns a Rooms Array object
-    public Room[] getR() {
+    public Room[] getRooms() {
         Room[] rooms = {};
         try {
             Gson gson = new Gson();
