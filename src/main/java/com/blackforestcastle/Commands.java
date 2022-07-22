@@ -1,13 +1,17 @@
 package com.blackforestcastle;
 
-import com.google.gson.Gson;
-
-import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Commands {
     Controller controller = Controller.getInstance();
+    Player player = new Player();
+    JSONReader jsonReader = new JSONReader();
+    Room[] rooms = jsonReader.getRooms();
 
+    public void start() {
+        player.setCurrentRoom(rooms[0]);
+    }
 
     //Parse input text and return as an array split into verb and noun
     String[] input() {
@@ -25,14 +29,12 @@ public class Commands {
         String[] input = input();
         String verb = "";
         String noun = "";
-        if (input.length == 1){
+        if (input.length == 1) {
             verb = input[0].toLowerCase();
-        }
-        else if (input.length == 2){
+        } else if (input.length == 2) {
             verb = input[0].toLowerCase();
             noun = input[1].toLowerCase();
-        }
-        else {
+        } else {
             System.out.println("Please enter a valid command, such as: ");
             controller.commandsInstructions();
             return;
@@ -68,8 +70,14 @@ public class Commands {
         }
     }
 
-    void go(String room) {
-        System.out.println("Going to " + room);
+    void go(String direction) {
+        if (direction.matches("north|east|south|west")) {
+            goToRoom(direction);
+        }
+        else {
+            System.out.println("Invalid direction, enter a valid direction.");
+        }
+        System.out.println(player.getCurrentRoom().roomInfo());
     }
 
     void get(String item) {
@@ -90,5 +98,15 @@ public class Commands {
 
     void help() {
         System.out.println("This will display the commands");
+    }
+
+    //Helper functions
+    void goToRoom(String direction) {
+        for (Room room : rooms) {
+            if (room.getName().equals(player.getCurrentRoom().getDirection(direction))) {
+                player.setCurrentRoom(room);
+                break;
+            }
+        }
     }
 }

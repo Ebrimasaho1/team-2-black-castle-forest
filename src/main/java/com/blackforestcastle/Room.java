@@ -35,20 +35,19 @@ public class Room {
         return stuff;
     }
 
-    public String getNorth() {
-        return north;
-    }
-
-    public String getSouth() {
-        return south;
-    }
-
-    public String getEast() {
-        return east;
-    }
-
-    public String getWest() {
-        return west;
+    public String getDirection(String dir) {
+        switch (dir){
+            case "north":
+                return north;
+            case "south":
+                return south;
+            case "east":
+                return east;
+            case "west":
+                return west;
+            default:
+                return "Not a valid direction";
+        }
     }
 
     public String getDesc() {

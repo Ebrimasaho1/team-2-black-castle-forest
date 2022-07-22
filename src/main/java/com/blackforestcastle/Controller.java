@@ -27,6 +27,7 @@ public class Controller {
         welcome();
         basic_info();
         commandsInstructions();
+        commands.start();
         while (gameRunning) {
             commands.interact();
         }
