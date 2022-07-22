@@ -52,9 +52,10 @@ public class Controller {
 
     }
 
-    public void commandsInstructions() {
+    public String commandsInstructions() {
         String basicInfo = jsonReader.getGameInfo()[0].getInfo();
         System.out.println(basicInfo);
+        return basicInfo;
     }
 
     public void quitGame() {
