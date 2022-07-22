@@ -54,11 +54,30 @@ public class Room {
         return desc;
     }
 
+    public String getValidDirections(){
+
+        if (getNorth().length() > 0){
+            north = "north: " + getNorth() + " ";
+        }
+        if(getSouth().length() > 0){
+            south = "south: " + getSouth()+ " ";
+        }
+        if (getWest().length() > 0){
+            west = "west: " + getWest()+ " ";
+        }
+        if (getEast().length() > 0){
+            east = "east: "+ getEast()+ " ";
+        }
+
+        return "Directions: " + north +  south  + east + west;
+
+    }
+
 
 
 
     public String roomInfo(){
-        return "Current Location: " + getName() + "\n" + "Description: " + getDesc()+ "\n" + "items: " + getItems() + "\n" ;
+        return "Current Location: " + getName() + "\n" + "Description: " + getDesc()+ "\n" + "items: " + getItems() + "\n" + getValidDirections() ;
 
     }
 }
