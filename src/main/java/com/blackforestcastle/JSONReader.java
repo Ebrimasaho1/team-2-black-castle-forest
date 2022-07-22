@@ -45,27 +45,31 @@ public class JSONReader {
     */
 
     // this method parses the rooms.json folder and returns a Rooms Array object
-    public  Room[] getR() throws IOException {
-        Gson gson = new Gson();
-        //String reader = Files.readString(Paths.get("./src/main/java/resources/rooms.json"));
-   Reader reader1 = new FileReader("./src/main/java/resources/rooms.json");
-   Room[] rooms = gson.fromJson(reader1, Room[].class);
-   return rooms;
+    public Room[] getR() {
+        Room[] rooms = {};
+        try {
+            Gson gson = new Gson();
+            //String reader = Files.readString(Paths.get("./src/main/java/resources/rooms.json"));
+            Reader reader1 = new FileReader("./src/main/java/resources/rooms.json");
+            rooms = gson.fromJson(reader1, Room[].class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File Not Found");
+        }
+        return rooms;
     }
+
     // This method parses the gameInfo.json file and returns a GameInfo Object that contains the required information.
-    public GameInfo[] getGameInfo() throws FileNotFoundException {
-        Gson gson = new Gson();
-        Reader reader = new FileReader("./src/main/java/resources/gameInfo.json");
-        GameInfo[] info1 = gson.fromJson(reader, GameInfo[].class);
-
-
+    public GameInfo[] getGameInfo() {
+        GameInfo[] info1 = {};
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader("./src/main/java/resources/gameInfo.json");
+            info1 = gson.fromJson(reader, GameInfo[].class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File Not Found");
+        }
         return info1;
-
-
     }
-
-
-
 }
-
-
