@@ -55,21 +55,25 @@ public class Room {
     }
 
     public String getValidDirections(){
+        String direction1 = "";
+        String direction2= "";
+        String direction3="";
+        String direction4 ="";
 
-        if (getNorth().length() > 0){
-            north = "north: " + getNorth() + " ";
+        if (getDirection("north").length() > 0){
+            direction1 = "north: " + getDirection("north")+ " ";
         }
-        if(getSouth().length() > 0){
-            south = "south: " + getSouth()+ " ";
+        if(getDirection("south").length() > 0){
+            direction2 = "south: " + getDirection("south")+ " ";
         }
-        if (getWest().length() > 0){
-            west = "west: " + getWest()+ " ";
+        if (getDirection("west").length() > 0){
+            direction3 = "west: " + getDirection("west")+ " ";
         }
-        if (getEast().length() > 0){
-            east = "east: "+ getEast()+ " ";
+        if (getDirection("east").length() > 0){
+            direction4 = "east: "+ getDirection("east")+ " ";
         }
 
-        return "Directions: " + north +  south  + east + west;
+        return "Directions: " + direction1 +  direction2  + direction3 + direction4;
 
     }
 

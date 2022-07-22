@@ -89,7 +89,7 @@ public class Commands {
     }
 
     void look() {
-        System.out.println("You look around");
+        System.out.println(player.getCurrentRoom().roomInfo());
     }
 
     void teleport(String room) {
@@ -97,7 +97,7 @@ public class Commands {
     }
 
     void help() {
-        System.out.println("This will display the commands");
+        System.out.println(controller.commandsInstructions());
     }
 
     //Helper functions
