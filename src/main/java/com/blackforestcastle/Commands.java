@@ -44,9 +44,14 @@ public class Commands {
             case "go":
                 go(noun);
                 break;
+            case "bag":
+                bag();
+                break;
             case "get":
                 get(noun);
                 break;
+            case "drop":
+                drop(noun);
             case "fight":
                 fight(noun);
                 break;
@@ -81,7 +86,21 @@ public class Commands {
     }
 
     void get(String item) {
-        System.out.println("Getting " + item);
+        Item itemObject = player.currentRoom.checkRoomForItem(item);
+        if (itemObject != null){
+            if (itemObject.getName().equals(item)){
+                player.inventory.add(itemObject);
+                player.currentRoom.itemObjects.remove(itemObject);
+            }
+        }
+    }
+
+    void drop(String item) {
+
+    }
+
+    void bag(){
+        player.showInventory();
     }
 
     void fight(String npc) {

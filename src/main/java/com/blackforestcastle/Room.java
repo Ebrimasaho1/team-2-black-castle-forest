@@ -1,9 +1,13 @@
 package com.blackforestcastle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
 
     String name;
     String[] items;
+    List<Item> itemObjects = new ArrayList<>();
     String north, south, east, west;
     String desc;
 
@@ -17,20 +21,38 @@ public class Room {
         this.desc = desc;
     }
     public Room(){
+    }
 
+    public void makeItemInstances() {
+        System.out.println("Making item instances");
+        JSONReader jsonReader = new JSONReader();
+        Item[] itemsJSON = jsonReader.getItems();
+        for (String item : items) {
+            for (Item itemO : itemsJSON) {
+                if (item.equals(itemO.getName())){
+                    itemObjects.add(itemO);
+                }
+            }
+        }
     }
 
     public String getName() {
         return name;
     }
 
+    public Item checkRoomForItem(String item) {
+        for (Item itemObject: itemObjects) {
+            if (item.equals(itemObject.getName())){
+                return itemObject;
+            }
+        }
+        return null;
+    }
+
     public String getItems() {
         String stuff = "";
-        for (String item: items) {
-            stuff +=  item + ", ";
-
-
-
+        for (Item item: itemObjects) {
+            stuff +=  item.getName() + ", ";
         }
         return stuff;
     }
@@ -76,9 +98,6 @@ public class Room {
         return "Directions: " + direction1 +  direction2  + direction3 + direction4;
 
     }
-
-
-
 
     public String roomInfo(){
         return "Current Location: " + getName() + "\n" + "Description: " + getDesc()+ "\n" + "items: " + getItems() + "\n" + getValidDirections() ;

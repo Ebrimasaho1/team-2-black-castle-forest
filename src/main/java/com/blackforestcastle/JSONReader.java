@@ -16,34 +16,6 @@ import java.util.List;
 
 public class JSONReader {
 
-
-   /*( public List<Room> getRooms() {
-        Gson gson = new Gson(); //
-        // create a reader
-        String reader;
-        List<Room> users = new ArrayList<>();
-
-        {
-            try {
-                reader = Files.readString(Paths.get("./src/main/java/resources/rooms.json"));
-                // convert JSON array to list of users
-                Room rooms = gson.fromJson(reader, Room.class);
-                users = new Gson().fromJson(reader, new TypeToken<List<Room>>(){}.getType() );
-
-                // print users
-                users.forEach(System.out::println);
-                // close reader
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    return users;
-    }
-
-    */
-
     // this method parses the rooms.json folder and returns a Rooms Array object
     public Room[] getRooms() {
         Room[] rooms = {};
@@ -52,6 +24,9 @@ public class JSONReader {
             //String reader = Files.readString(Paths.get("./src/main/java/resources/rooms.json"));
             Reader reader1 = new FileReader("./src/main/java/resources/rooms.json");
             rooms = gson.fromJson(reader1, Room[].class);
+            for (Room room : rooms) {
+                room.makeItemInstances();
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File Not Found");
@@ -66,6 +41,19 @@ public class JSONReader {
             Gson gson = new Gson();
             Reader reader = new FileReader("./src/main/java/resources/gameInfo.json");
             info1 = gson.fromJson(reader, GameInfo[].class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File Not Found");
+        }
+        return info1;
+    }
+
+    public Item[] getItems() {
+        Item[] info1 = {};
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader("./src/main/java/resources/items.json");
+            info1 = gson.fromJson(reader, Item[].class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File Not Found");
