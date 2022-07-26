@@ -1,16 +1,17 @@
 package com.blackforestcastle;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Commands {
     Controller controller = Controller.getInstance();
+    NPC npc = new NPC();
     Player player = new Player();
     JSONReader jsonReader = new JSONReader();
     Room[] rooms = jsonReader.getRooms();
 
     public void start() {
         player.setCurrentRoom(rooms[0]);
+        player.setHP(100);
     }
 
     //Parse input text and return as an array split into verb and noun
@@ -52,8 +53,8 @@ public class Commands {
                 break;
             case "drop":
                 drop(noun);
-            case "fight":
-                fight(noun);
+            case "attack":
+                attack();
                 break;
             case "look":
                 look();
@@ -78,8 +79,7 @@ public class Commands {
     void go(String direction) {
         if (direction.matches("north|east|south|west")) {
             goToRoom(direction);
-        }
-        else {
+        } else {
             System.out.println("Invalid direction, enter a valid direction.");
         }
         System.out.println(player.getCurrentRoom().roomInfo());
@@ -87,9 +87,10 @@ public class Commands {
 
     void get(String item) {
         Item itemObject = player.currentRoom.checkRoomForItem(item);
-        if (itemObject != null){
-            if (itemObject.getName().equals(item)){
+        if (itemObject != null) {
+            if (itemObject.getName().equals(item)) {
                 player.inventory.add(itemObject);
+                System.out.println("Items picked up: " + itemObject.getName());
                 player.currentRoom.itemObjects.remove(itemObject);
             }
         }
@@ -99,12 +100,34 @@ public class Commands {
 
     }
 
-    void bag(){
+    void bag() {
         player.showInventory();
     }
 
-    void fight(String npc) {
-        System.out.println("Fighting " + npc);
+    void attack() {
+        if (!player.currentRoom.getNpcObjects().isEmpty()) {
+            battle();
+        }
+    }
+
+    void battle() {
+        Character npc = player.currentRoom.getNpcObjects().get(0);
+        boolean battleOngoing = true;
+        while (battleOngoing) {
+            player.attack(npc);
+            if (npc.getHP() <= 0) {
+                System.out.println("You won the battle!!");
+                player.currentRoom.getNpcObjects().remove(npc);
+                break;
+            }
+            npc.attack(player);
+            if (player.getHP() <= 0) {
+                System.out.println("You're dead..");
+                controller.newGame();
+
+            }
+
+        }
     }
 
     void look() {

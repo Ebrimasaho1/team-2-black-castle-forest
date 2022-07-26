@@ -6,7 +6,8 @@
     "south": "North Hallway",
     "east": "",
     "west": "",
-    "desc": "The Portcullis is slammed shut. There is a pulley system that is missing a lever."
+    "desc": "The Portcullis is slammed shut. There is a pulley system that is missing a lever.",
+    "NPC" : []
   },
   {
     "name": "North Hallway",
@@ -17,7 +18,8 @@
     "south": "Central Hallway",
     "east": "Living Room",
     "west": "Kitchen",
-    "desc": "Statues of past kings in armor, torches and banners."
+    "desc": "Statues of past kings in armor, torches and banners.",
+    "NPC" : []
   },
   {
     "name": "South Hallway",
@@ -28,7 +30,9 @@
     "south": "",
     "east": "Bedroom",
     "west": "Pantry",
-    "desc": "Suits of armor line the sides of the hallway, it almost seems as if they want to lunge out at you. "
+    "desc": "Suits of armor line the sides of the hallway, it almost seems as if they want to lunge out at you. ",
+    "NPC" : []
+
   },
   {
     "name": "Central Hallway",
@@ -37,7 +41,8 @@
     "south": "South Hallway",
     "east": "Armory",
     "west": "Dining",
-    "desc": "A long corridor filled with gothic paintings, you see an image of a pale orphan, her eyes seem to follow you.  "
+    "desc": "A long corridor filled with gothic paintings, you see an image of a pale orphan, her eyes seem to follow you.  ",
+    "NPC" : ["dragon"]
   },
   {
     "name": "Living Room",
@@ -48,7 +53,8 @@
     "south": "",
     "east": "",
     "west": "North Hallway",
-    "desc": "A fireplace with years of ash and scorch marks dominates the room. An old book sits on a table."
+    "desc": "A fireplace with years of ash and scorch marks dominates the room. An old book sits on a table.",
+    "NPC" : []
   },
   {
     "name": "Armory",
@@ -63,7 +69,8 @@
     "south": "",
     "east": "",
     "west": "Central Hallway",
-    "desc": "Shields, swords, bows and arrows are stacked on shelves and scattered across the ground. "
+    "desc": "Shields, swords, bows and arrows are stacked on shelves and scattered across the ground. ",
+    "NPC" : []
   },
   {
     "name": "Bedroom",
@@ -74,7 +81,8 @@
     "south": "",
     "east": "",
     "west": "South Hallway",
-    "desc": "A big canopy bed sits in the middle of the room, it is riddled with spider webs and dust. "
+    "desc": "A big canopy bed sits in the middle of the room, it is riddled with spider webs and dust. ",
+    "NPC" : []
   },
   {
     "name": "Pantry",
@@ -87,7 +95,8 @@
     "south": "",
     "east": "South Hallway",
     "west": "",
-    "desc": "You see odd items, nothing looks edible. Rats scurry around your feet. "
+    "desc": "You see odd items, nothing looks edible. Rats scurry around your feet. ",
+    "NPC" : ["spider"]
   },
   {
     "name": "Kitchen",
@@ -96,7 +105,8 @@
     "south": "Dining",
     "east": "North Hallway",
     "west": "",
-    "desc": "A place used to prepare meals, the cutlery is old and rusted."
+    "desc": "A place used to prepare meals, the cutlery is old and rusted.",
+    "NPC" : []
   },
   {
     "name": "Dining",
@@ -107,7 +117,8 @@
     "south": "Pantry",
     "east": "Central Hallway",
     "west": "",
-    "desc": " A painting of a family sits above the dining table, the father's gaze pierces through you. "
+    "desc": " A painting of a family sits above the dining table, the father's gaze pierces through you. ",
+    "NPC" : []
   }
 ]
 

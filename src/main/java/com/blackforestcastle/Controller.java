@@ -1,9 +1,11 @@
 package com.blackforestcastle;
 
+import java.io.Console;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.*;
 
 public class Controller {
     private boolean gameRunning;
@@ -16,7 +18,7 @@ public class Controller {
     }
 
     public static Controller getInstance() {
-        if (controller_instance == null){
+        if (controller_instance == null) {
             controller_instance = new Controller();
         }
         return controller_instance;
@@ -32,7 +34,7 @@ public class Controller {
             commands.interact();
         }
     }
-    
+
     private void basic_info() {
         String basicInfo = jsonReader.getGameInfo()[1].getInfo();
         System.out.println(basicInfo);
