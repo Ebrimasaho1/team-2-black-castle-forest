@@ -26,6 +26,7 @@ public class JSONReader {
             rooms = gson.fromJson(reader1, Room[].class);
             for (Room room : rooms) {
                 room.makeItemInstances();
+                room.makeNPCInstances();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,4 +61,19 @@ public class JSONReader {
         }
         return info1;
     }
+
+    public NPC[] getNPC() {
+        NPC[] info1 = {};
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader("./src/main/java/resources/npc.json");
+            info1 = gson.fromJson(reader, NPC[].class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File Not Found");
+        }
+        return info1;
+    }
+
+
 }

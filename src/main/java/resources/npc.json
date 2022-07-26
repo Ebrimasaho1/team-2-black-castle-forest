@@ -1,0 +1,18 @@
+[
+  {
+    "name": "dragon",
+    "attackPower" : 15,
+    "defendPower" : 10,
+    "inventory" : [],
+    "HP" : 20,
+    "isFriendly": false
+  },
+  {
+    "name": "spider",
+    "attackPower" : 10,
+    "defendPower" : 5,
+    "inventory" : [],
+    "HP" : 20,
+    "isFriendly": false
+  }
+  ]
