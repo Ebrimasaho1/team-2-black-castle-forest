@@ -50,16 +50,16 @@ public class JSONReader {
     }
 
     public Item[] getItems() {
-        Item[] info1 = {};
+        Item[] items = {};
         try {
             Gson gson = new Gson();
             Reader reader = new FileReader("./src/main/java/resources/items.json");
-            info1 = gson.fromJson(reader, Item[].class);
+            items = gson.fromJson(reader, Item[].class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File Not Found");
         }
-        return info1;
+        return items;
     }
 
     public NPC[] getNPC() {

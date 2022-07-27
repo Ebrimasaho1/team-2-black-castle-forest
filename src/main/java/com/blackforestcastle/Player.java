@@ -7,11 +7,6 @@ class Player extends Character {
 
     Room currentRoom;
 
-    Item sword;
-    Item knife;
-    Item bow;
-    Item arrow;
-
     @Override
     public void attack(Character npc) {
         getPlayerAttackPower();

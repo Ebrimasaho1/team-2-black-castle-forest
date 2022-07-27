@@ -53,6 +53,7 @@ public class Commands {
                 break;
             case "drop":
                 drop(noun);
+                break;
             case "attack":
                 attack();
                 break;
@@ -71,8 +72,6 @@ public class Commands {
             case "new":
                 controller.newGame();
                 break;
-            default:
-                controller.commandsInstructions();
         }
     }
 
@@ -142,7 +141,7 @@ public class Commands {
     }
 
     void help() {
-        System.out.println(controller.commandsInstructions());
+        controller.commandsInstructions();
     }
 
     //Helper functions
