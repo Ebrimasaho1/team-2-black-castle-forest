@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Entrance",
+    "items": [],
+    "north": "",
+    "south": "North Hallway",
+    "east": "",
+    "west": "",
+    "desc": "The Portcullis is slammed shut. There is a pulley system that is missing a lever.",
+    "NPC" : []
+  },
+  {
+    "name": "North Hallway",
+    "items": [
+      "torch"
+    ],
+    "north": "Entrance",
+    "south": "Central Hallway",
+    "east": "Living Room",
+    "west": "Kitchen",
+    "desc": "Statues of past kings in armor, torches and banners.",
+    "NPC" : []
+  },
+  {
+    "name": "South Hallway",
+    "items": [
+      "armor"
+    ],
+    "north": "Central Hallway",
+    "south": "",
+    "east": "Bedroom",
+    "west": "Pantry",
+    "desc": "Suits of armor line the sides of the hallway, it almost seems as if they want to lunge out at you. ",
+    "NPC" : []
+
+  },
+  {
+    "name": "Central Hallway",
+    "items": [],
+    "north": "North Hallway",
+    "south": "South Hallway",
+    "east": "Armory",
+    "west": "Dining",
+    "desc": "A long corridor filled with gothic paintings, you see an image of a pale orphan, her eyes seem to follow you.  ",
+    "NPC" : ["dragon"]
+  },
+  {
+    "name": "Living Room",
+    "items": [
+      "book"
+    ],
+    "north": "",
+    "south": "",
+    "east": "",
+    "west": "North Hallway",
+    "desc": "A fireplace with years of ash and scorch marks dominates the room. An old book sits on a table.",
+    "NPC" : []
+  },
+  {
+    "name": "Armory",
+    "items": [
+      "shield",
+      "sword",
+      "bow",
+      "arrows",
+      "lever"
+    ],
+    "north": "",
+    "south": "",
+    "east": "",
+    "west": "Central Hallway",
+    "desc": "Shields, swords, bows and arrows are stacked on shelves and scattered across the ground. ",
+    "NPC" : []
+  },
+  {
+    "name": "Bedroom",
+    "items": [
+      "key"
+    ],
+    "north": "",
+    "south": "",
+    "east": "",
+    "west": "South Hallway",
+    "desc": "A big canopy bed sits in the middle of the room, it is riddled with spider webs and dust. ",
+    "NPC" : []
+  },
+  {
+    "name": "Pantry",
+    "items": [
+      "mead",
+      "bread",
+      "turkey"
+    ],
+    "north": "Dining",
+    "south": "",
+    "east": "South Hallway",
+    "west": "",
+    "desc": "You see odd items, nothing looks edible. Rats scurry around your feet. ",
+    "NPC" : ["spider"]
+  },
+  {
+    "name": "Kitchen",
+    "items": [],
+    "north": "",
+    "south": "Dining",
+    "east": "North Hallway",
+    "west": "",
+    "desc": "A place used to prepare meals, the cutlery is old and rusted.",
+    "NPC" : []
+  },
+  {
+    "name": "Dining",
+    "items": [
+      "knife"
+    ],
+    "north": "Kitchen",
+    "south": "Pantry",
+    "east": "Central Hallway",
+    "west": "",
+    "desc": " A painting of a family sits above the dining table, the father's gaze pierces through you. ",
+    "NPC" : []
+  }
+]
+
