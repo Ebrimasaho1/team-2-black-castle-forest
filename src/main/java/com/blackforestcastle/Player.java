@@ -25,20 +25,17 @@ class Player extends Character {
         // knife, sword, bow, arrow
         for (Item item : inventory) {
             if (item.getName().equals("bow")) {
-                for(Item item0 : inventory) {
-                    if(item0.getName().equals("arrows")) {
+                for (Item item0 : inventory) {
+                    if (item0.getName().equals("arrows")) {
                         setAttackPower(15);
                     }
                 }
 
-            }
-            else if (item.getName().equals("sword")) {
+            } else if (item.getName().equals("sword")) {
                 setAttackPower(10);
-                }
-
-            else if (item.getName().equals("knife")) {
-                    setAttackPower(5);
-                }
+            } else if (item.getName().equals("knife")) {
+                setAttackPower(5);
+            }
 
         }
     }
@@ -51,6 +48,14 @@ class Player extends Character {
         System.out.println();
     }
 
+    public Item checkInventoryForItem(String item) {
+        for (Item itemObject : inventory) {
+            if (item.equals(itemObject.getName())) {
+                return itemObject;
+            }
+        }
+        return null;
+    }
 
     public List<Item> getInventory() {
         return inventory;
