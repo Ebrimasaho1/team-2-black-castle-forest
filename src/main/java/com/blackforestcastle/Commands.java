@@ -1,16 +1,17 @@
 package com.blackforestcastle;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Commands {
     Controller controller = Controller.getInstance();
+    NPC npc = new NPC();
     Player player = new Player();
     JSONReader jsonReader = new JSONReader();
     Room[] rooms = jsonReader.getRooms();
 
     public void start() {
         player.setCurrentRoom(rooms[0]);
+        player.setHP(100);
     }
 
     //Parse input text and return as an array split into verb and noun
@@ -44,11 +45,17 @@ public class Commands {
             case "go":
                 go(noun);
                 break;
+            case "bag":
+                bag();
+                break;
             case "get":
                 get(noun);
                 break;
-            case "fight":
-                fight(noun);
+            case "drop":
+                drop(noun);
+                break;
+            case "attack":
+                attack();
                 break;
             case "look":
                 look();
@@ -65,27 +72,64 @@ public class Commands {
             case "new":
                 controller.newGame();
                 break;
-            default:
-                controller.commandsInstructions();
         }
     }
 
     void go(String direction) {
         if (direction.matches("north|east|south|west")) {
             goToRoom(direction);
-        }
-        else {
+        } else {
             System.out.println("Invalid direction, enter a valid direction.");
         }
         System.out.println(player.getCurrentRoom().roomInfo());
     }
 
     void get(String item) {
-        System.out.println("Getting " + item);
+        Item itemObject = player.currentRoom.checkRoomForItem(item);
+        if (itemObject != null && itemObject.getName().equals(item)) {
+            player.inventory.add(itemObject);
+            System.out.println("Picked up: " + itemObject.getName());
+            player.currentRoom.itemObjects.remove(itemObject);
+        }
     }
 
-    void fight(String npc) {
-        System.out.println("Fighting " + npc);
+    void drop(String item) {
+        Item itemObject = player.checkInventoryForItem(item);
+        if (itemObject != null && itemObject.getName().equals(item)) {
+            player.currentRoom.itemObjects.add(itemObject);
+            player.inventory.remove(itemObject);
+            System.out.println("Dropped: " + itemObject.getName());
+        }
+    }
+
+    void bag() {
+        player.showInventory();
+    }
+
+    void attack() {
+        if (!player.currentRoom.getNpcObjects().isEmpty()) {
+            battle();
+        }
+    }
+
+    void battle() {
+        Character npc = player.currentRoom.getNpcObjects().get(0);
+        boolean battleOngoing = true;
+        while (battleOngoing) {
+            player.attack(npc);
+            if (npc.getHP() <= 0) {
+                System.out.println("You won the battle!!");
+                player.currentRoom.getNpcObjects().remove(npc);
+                break;
+            }
+            npc.attack(player);
+            if (player.getHP() <= 0) {
+                System.out.println("You're dead..");
+                controller.newGame();
+
+            }
+
+        }
     }
 
     void look() {
@@ -97,7 +141,7 @@ public class Commands {
     }
 
     void help() {
-        System.out.println(controller.commandsInstructions());
+        controller.commandsInstructions();
     }
 
     //Helper functions
