@@ -87,17 +87,20 @@ public class Commands {
 
     void get(String item) {
         Item itemObject = player.currentRoom.checkRoomForItem(item);
-        if (itemObject != null) {
-            if (itemObject.getName().equals(item)) {
-                player.inventory.add(itemObject);
-                System.out.println("Items picked up: " + itemObject.getName());
-                player.currentRoom.itemObjects.remove(itemObject);
-            }
+        if (itemObject != null && itemObject.getName().equals(item)) {
+            player.inventory.add(itemObject);
+            System.out.println("Picked up: " + itemObject.getName());
+            player.currentRoom.itemObjects.remove(itemObject);
         }
     }
 
     void drop(String item) {
-
+        Item itemObject = player.checkInventoryForItem(item);
+        if (itemObject != null && itemObject.getName().equals(item)) {
+            player.currentRoom.itemObjects.add(itemObject);
+            player.inventory.remove(itemObject);
+            System.out.println("Dropped: " + itemObject.getName());
+        }
     }
 
     void bag() {
