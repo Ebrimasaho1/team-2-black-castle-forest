@@ -1,7 +1,9 @@
 package com.blackforestcastle;
 
-import java.io.Console;
-import java.io.IOException;
+import org.apache.commons.io.IOUtils;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -41,13 +43,10 @@ public class Controller {
     }
 
     private void welcome() {
-        Path filepath = Paths.get("./src/main/java/resources/title.txt");
-
         try {
-            String welcomeBanner = Files.readString(filepath);
-            System.out.println("Welcome To: \n");
-            System.out.println(welcomeBanner);
-        } catch (IOException e) {
+            String result = IOUtils.toString(new InputStreamReader(Controller.class.getResourceAsStream("/title.txt"), StandardCharsets.UTF_8));
+            System.out.println(result);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
