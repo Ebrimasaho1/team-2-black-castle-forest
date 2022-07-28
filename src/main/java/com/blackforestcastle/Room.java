@@ -2,6 +2,7 @@ package com.blackforestcastle;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.blackforestcastle.Commands;
 
 public class Room {
 
@@ -127,8 +128,8 @@ public class Room {
         return npcObjects;
     }
 
-    public String roomInfo() {
-        return "Current Location: " + getName() + "\n" + "Description: " + getDesc() + "\n" + "Items: " + getItems() + "\n" + getValidDirections()
+    public String roomInfo(Character player) {
+        return "Current Location: " + getName() + "\n" + "Player Health: " + player.getHP() + "\n" + "Description: " + getDesc() + "\n" + "Items: " + getItems() + "\n" + getValidDirections()
                 + "\n" + "NPCs: " + getNPCs();
 
     }
