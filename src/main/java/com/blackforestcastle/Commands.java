@@ -1,5 +1,9 @@
 package com.blackforestcastle;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Commands {
@@ -86,6 +90,9 @@ public class Commands {
             case "terminate":
                 controller.quitGame();
                 break;
+            case "map":
+                map();
+                break;
             case "new":
             case "restart":
                 controller.newGame();
@@ -161,6 +168,15 @@ public class Commands {
             player.currentRoom.itemObjects.add(itemObject);
             player.inventory.remove(itemObject);
             System.out.println("Dropped: " + itemObject.getName());
+        }
+    }
+
+    void map() {
+        try {
+            String result = IOUtils.toString(new InputStreamReader(Commands.class.getResourceAsStream("/map.txt"), StandardCharsets.UTF_8));
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
