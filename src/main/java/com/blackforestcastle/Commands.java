@@ -8,6 +8,7 @@ public class Commands {
     JSONReader jsonReader = new JSONReader();
     Room[] rooms = jsonReader.getRooms();
     Player player = new Player(rooms[0], 100);
+    String previousCommand = "";
 
 
     //Parse input text and return as an array split into verb and noun
@@ -16,12 +17,15 @@ public class Commands {
 
         System.out.print(">>");
         String input = scanner.nextLine();
+        previousCommand = input;
 
         String[] splitInput = input.split(" ");// Read user input and split into an array based off of regex.
         return splitInput;
     }
 
     public void interact() {
+        System.out.println(">>" + previousCommand);
+        System.out.println(player.getCurrentRoom().roomInfo(player));
         System.out.println("What would you like to do?");
         String[] input = input();
         String verb = "";
@@ -41,6 +45,7 @@ public class Commands {
             case "go":
             case "move":
                 go(noun);
+                ConsoleUtilities.clearConsole();
                 break;
 
             case "bag":
@@ -139,7 +144,6 @@ public class Commands {
         } else {
             System.out.println("Invalid direction, enter a valid direction.");
         }
-        System.out.println(player.getCurrentRoom().roomInfo(player));
     }
 
     void get(String item) {
