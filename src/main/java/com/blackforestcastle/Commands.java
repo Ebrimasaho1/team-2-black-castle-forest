@@ -5,14 +5,10 @@ import java.util.Scanner;
 public class Commands {
     Controller controller = Controller.getInstance();
     NPC npc = new NPC();
-    Player player = new Player();
     JSONReader jsonReader = new JSONReader();
     Room[] rooms = jsonReader.getRooms();
+    Player player = new Player(rooms[0], 100);
 
-    public void start() {
-        player.setCurrentRoom(rooms[0]);
-        player.setHP(100);
-    }
 
     //Parse input text and return as an array split into verb and noun
     String[] input() {
@@ -43,35 +39,97 @@ public class Commands {
 
         switch (verb) {
             case "go":
+            case "move":
                 go(noun);
                 break;
+
             case "bag":
+            case "inventory":
                 bag();
                 break;
             case "get":
+            case "grab":
+            case "take":
+            case "pick":
                 get(noun);
                 break;
             case "drop":
+            case "yeet":
+            case "release":
                 drop(noun);
                 break;
             case "attack":
+            case "fight":
+            case "combat":
                 attack();
                 break;
             case "look":
+            case "show":
+            case "see":
                 look();
                 break;
             case "teleport":
+            case "warp":
                 teleport(noun);
                 break;
             case "?":
+            case "help":
                 help();
                 break;
             case "quit":
+            case "exit":
+            case "terminate":
                 controller.quitGame();
                 break;
             case "new":
+            case "restart":
                 controller.newGame();
                 break;
+            case "use":
+                use(noun);
+        }
+    }
+
+    private void use(String noun) {
+        Item itemObject = player.checkInventoryForItem(noun);
+        if (itemObject != null && itemObject.getName().equals(noun)) {
+            switch (noun) {
+                case "mead":
+                    player.setHP(player.getHP() + 15);
+                    break;
+                case "bread":
+                    player.setHP(player.getHP() + 5);
+                    break;
+                case "turkey":
+                    player.setHP(player.getHP() + 20);
+                    break;
+                case "potion":
+                    player.setHP(player.getHP() + 30);
+                    break;
+                case "book":
+                    System.out.println("A page suggest a key is located somewhere in the bedroom.");
+                    break;
+                case "lever":
+                    if (player.currentRoom.equals(rooms[0]) && itemObject.getName().equals("lever")) {
+                        System.out.println("You insert the lever into the pulley and begin to crank clockwise, the portcullis raises opening the way you got in. \n " + "You hastily escape through the entrance to freedom.");
+                        System.out.println("Congratulations you win the game!");
+                        controller.quitGame();
+                    }
+                    break;
+                case "key":
+
+                    if (player.currentRoom.equals(rooms[5])) {
+                        System.out.println("After using the key, you see a lever in the chest.");
+                        rooms[5].itemObjects.add(jsonReader.getItems()[7]);
+
+                    }
+                    break;
+
+
+            }
+
+            player.inventory.remove(itemObject);
+            System.out.println("Used: " + itemObject.getName());
         }
     }
 
@@ -81,7 +139,7 @@ public class Commands {
         } else {
             System.out.println("Invalid direction, enter a valid direction.");
         }
-        System.out.println(player.getCurrentRoom().roomInfo());
+        System.out.println(player.getCurrentRoom().roomInfo(player));
     }
 
     void get(String item) {
@@ -133,7 +191,7 @@ public class Commands {
     }
 
     void look() {
-        System.out.println(player.getCurrentRoom().roomInfo());
+        System.out.println(player.getCurrentRoom().roomInfo(player));
     }
 
     void teleport(String room) {

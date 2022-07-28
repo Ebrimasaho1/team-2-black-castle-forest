@@ -7,6 +7,16 @@ class Player extends Character {
 
     Room currentRoom;
 
+    public Player() {
+
+    }
+
+    public Player(Room currentRoom, int HP) {
+        this.currentRoom = currentRoom;
+        super.setHP(HP);
+
+    }
+
     @Override
     public void attack(Character npc) {
         getPlayerAttackPower();
