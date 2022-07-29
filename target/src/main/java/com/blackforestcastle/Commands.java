@@ -1,12 +1,6 @@
 package com.blackforestcastle;
 
-import org.apache.commons.io.IOUtils;
-
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
 import java.util.Scanner;
-
 
 public class Commands {
     Controller controller = Controller.getInstance();
@@ -14,7 +8,6 @@ public class Commands {
     JSONReader jsonReader = new JSONReader();
     Room[] rooms = jsonReader.getRooms();
     Player player = new Player(rooms[0], 100);
-    String previousCommand = "";
 
 
     //Parse input text and return as an array split into verb and noun
@@ -23,15 +16,12 @@ public class Commands {
 
         System.out.print(">>");
         String input = scanner.nextLine();
-        previousCommand = input;
 
         String[] splitInput = input.split(" ");// Read user input and split into an array based off of regex.
         return splitInput;
     }
 
     public void interact() {
-        System.out.println(">>" + previousCommand);
-        System.out.println(player.getCurrentRoom().roomInfo(player));
         System.out.println("What would you like to do?");
         String[] input = input();
         String verb = "";
@@ -51,7 +41,6 @@ public class Commands {
             case "go":
             case "move":
                 go(noun);
-                ConsoleUtilities.clearConsole();
                 break;
 
             case "bag":
@@ -91,9 +80,6 @@ public class Commands {
             case "exit":
             case "terminate":
                 controller.quitGame();
-                break;
-            case "map":
-                map();
                 break;
             case "new":
             case "restart":
@@ -153,6 +139,7 @@ public class Commands {
         } else {
             System.out.println("Invalid direction, enter a valid direction.");
         }
+        System.out.println(player.getCurrentRoom().roomInfo(player));
     }
 
     void get(String item) {
@@ -170,15 +157,6 @@ public class Commands {
             player.currentRoom.itemObjects.add(itemObject);
             player.inventory.remove(itemObject);
             System.out.println("Dropped: " + itemObject.getName());
-        }
-    }
-
-    void map() {
-        try {
-            String result = IOUtils.toString(new InputStreamReader(Commands.class.getResourceAsStream("/map.txt"), StandardCharsets.UTF_8));
-            System.out.println(result);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -217,13 +195,7 @@ public class Commands {
     }
 
     void teleport(String room) {
-        for (Room roomX : rooms) {
-            if (roomX.getName().toLowerCase().equals(room)) {
-                player.setCurrentRoom(roomX);
-                break;
-            }
-        }
-
+        System.out.println("You teleport to " + room);
     }
 
     void help() {

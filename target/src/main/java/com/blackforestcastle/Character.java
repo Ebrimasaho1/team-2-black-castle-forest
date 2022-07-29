@@ -12,8 +12,8 @@ public abstract class Character {
     List<Item> inventory = new ArrayList<>();
 
 
-    public int randomNumber(int n) {
-        int result = (int) ((Math.random() * n) + 1);
+    public int randomNumber() {
+        int result = (int) ((Math.random() * 10) + 1);
         return result;
     }
 
