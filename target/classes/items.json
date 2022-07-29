@@ -54,6 +54,10 @@
   {
     "name": "potion",
     "description" : "A strange liquid that restores vitality."
+  },
+  {
+    "name": "ring",
+    "description" : "A ring filled with magic powers."
   }
 
 ]

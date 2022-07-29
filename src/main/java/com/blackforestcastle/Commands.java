@@ -217,13 +217,20 @@ public class Commands {
     }
 
     void teleport(String room) {
-        for (Room roomX : rooms) {
-            if (roomX.getName().toLowerCase().equals(room)) {
-                player.setCurrentRoom(roomX);
+        boolean hasRing = false;
+        for(Item itemObj : player.inventory) {
+            if (itemObj.getName().equals("ring")) {
+                hasRing = true;
                 break;
             }
         }
-
+        for (Room roomX : rooms) {
+            if (roomX.getName().toLowerCase().equals(room) && hasRing) {
+               player.setCurrentRoom(roomX);
+               System.out.println("Teleported to: " + roomX.getName());
+               break;
+            }
+        }
     }
 
     void help() {
