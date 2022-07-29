@@ -99,7 +99,7 @@
   },
   {
     "name": "Kitchen",
-    "items": [],
+    "items": ["ring"],
     "north": "",
     "south": "Dining",
     "east": "North Hallway",
