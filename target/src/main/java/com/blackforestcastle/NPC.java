@@ -7,7 +7,7 @@ class NPC extends Character {
 
     @Override
     public void attack(Character player) {
-        int damageDone = getAttackPower() + randomNumber(10);
+        int damageDone = getAttackPower() + randomNumber();
         player.setHP(player.getHP()-damageDone);
         System.out.println("The enemy did " + damageDone + " damage. Your health is now " + player.getHP());
 
