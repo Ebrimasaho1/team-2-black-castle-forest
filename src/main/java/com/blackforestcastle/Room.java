@@ -129,8 +129,14 @@ public class Room {
     }
 
     public String roomInfo(Character player) {
+        String npcStringDesc = "";
+        if (!npcObjects.isEmpty()){
+            for (NPC npc : npcObjects){
+                npcStringDesc = "\n" + npc.getDesc();
+            }
+        }
         return "Current Location: " + getName() + "\n" + "Player Health: " + player.getHP() + "\n" + "Description: " + getDesc() + "\n" + "Items: " + getItems() + "\n" + getValidDirections()
-                + "\n" + "NPCs: " + getNPCs();
+                + "\n" + "NPCs: " + getNPCs()  + npcStringDesc;
 
     }
 }

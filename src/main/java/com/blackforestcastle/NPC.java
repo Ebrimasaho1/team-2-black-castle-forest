@@ -3,6 +3,7 @@ package com.blackforestcastle;
 class NPC extends Character {
 
     String name;
+    String desc;
     boolean isFriendly;
 
     @Override
@@ -20,6 +21,12 @@ class NPC extends Character {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getDesc(){
+        return desc;
+    }
+
+
 
 
 }

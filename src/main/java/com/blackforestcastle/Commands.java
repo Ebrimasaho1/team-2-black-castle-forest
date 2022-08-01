@@ -206,7 +206,8 @@ public class Commands {
             }
             npc.attack(player);
             if (player.getHP() <= 0) {
-                System.out.println("You're dead..");
+                System.out.println("*** You're dead.. *** :(");
+                System.out.println("\n");
                 controller.newGame();
 
             }
