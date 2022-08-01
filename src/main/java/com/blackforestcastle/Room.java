@@ -108,19 +108,19 @@ public class Room {
         String direction4 = "";
 
         if (getDirection("north").length() > 0) {
-            direction1 = "north: " + getDirection("north") + " ";
+            direction1 = "North: " + getDirection("north") + " ";
         }
         if (getDirection("south").length() > 0) {
-            direction2 = "south: " + getDirection("south") + " ";
+            direction2 = "South: " + getDirection("south") + " ";
         }
         if (getDirection("west").length() > 0) {
-            direction3 = "west: " + getDirection("west") + " ";
+            direction3 = "West: " + getDirection("west") + " ";
         }
         if (getDirection("east").length() > 0) {
-            direction4 = "east: " + getDirection("east") + " ";
+            direction4 = "East: " + getDirection("east") + " ";
         }
 
-        return "Directions: " + direction1 + direction2 + direction3 + direction4;
+        return "Directions available-- " + direction1 + direction2 + direction3 + direction4;
 
     }
 
