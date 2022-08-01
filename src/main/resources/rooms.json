@@ -42,7 +42,7 @@
     "east": "Armory",
     "west": "Dining",
     "desc": "A long corridor filled with gothic paintings, you see an image of a pale orphan, her eyes seem to follow you.  ",
-    "NPC" : ["dragon"]
+    "NPC" : ["goblin"]
   },
   {
     "name": "Living Room",
@@ -62,14 +62,13 @@
       "shield",
       "sword",
       "bow",
-      "arrows",
-      "lever"
+      "arrows"
     ],
     "north": "",
     "south": "",
     "east": "",
     "west": "Central Hallway",
-    "desc": "Shields, swords, bows and arrows are stacked on shelves and scattered across the ground. ",
+    "desc": "Shields, swords, bows and arrows are stacked on shelves and scattered across the ground. There is a locked chest in the corner. ",
     "NPC" : []
   },
   {
@@ -100,7 +99,7 @@
   },
   {
     "name": "Kitchen",
-    "items": [],
+    "items": ["ring"],
     "north": "",
     "south": "Dining",
     "east": "North Hallway",

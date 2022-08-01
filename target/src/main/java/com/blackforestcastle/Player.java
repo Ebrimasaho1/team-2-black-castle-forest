@@ -20,7 +20,7 @@ class Player extends Character {
     @Override
     public void attack(Character npc) {
         getPlayerAttackPower();
-        int damageDone = getAttackPower() + randomNumber(10);
+        int damageDone = getAttackPower() + randomNumber();
         npc.setHP(npc.getHP() - damageDone);
         System.out.println("You did " + damageDone + " damage. The enemies health now is " + npc.getHP());
     }

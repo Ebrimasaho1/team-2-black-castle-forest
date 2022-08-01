@@ -50,5 +50,10 @@
   {
     "name": "knife",
     "description": "A rusty metal dagger with a wooden handle."
+  },
+  {
+    "name": "potion",
+    "description" : "A strange liquid that restores vitality."
   }
+
 ]

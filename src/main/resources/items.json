@@ -1,0 +1,63 @@
+[
+  {
+    "name": "torch",
+    "description": "Its a stick with some cloth and fuel that burns for providing light."
+  },
+  {
+    "name": "armor",
+    "description": "Its a suit of protective armor."
+  },
+  {
+    "name": "book",
+    "description": "Its a diary that says something about a key under a pillow."
+  },
+  {
+    "name": "shield",
+    "description": "A sturdy metal shield, could be useful for defending yourself."
+  },
+  {
+    "name": "sword",
+    "description": "A pointy metal sword, could be useful for stabbing something."
+  },
+  {
+    "name": "bow",
+    "description": "A large oak bow, shoots arrows."
+  },
+  {
+    "name": "arrows",
+    "description": "Metal tipped arrows to be shot with a bow."
+  },
+  {
+    "name": "lever",
+    "description": "A wooden lever, looks like it was taken off something."
+  },
+  {
+    "name": "key",
+    "description": "A brass key"
+  },
+  {
+    "name": "mead",
+    "description": "Some strong smelling mead, would make for a good party."
+  },
+  {
+    "name": "bread",
+    "description": "Some old mouldy bread, I probably would not eat it."
+  },
+  {
+    "name": "turkey",
+    "description": "Its been here a while, its pretty much turkey jerky now."
+  },
+  {
+    "name": "knife",
+    "description": "A rusty metal dagger with a wooden handle."
+  },
+  {
+    "name": "potion",
+    "description" : "A strange liquid that restores vitality."
+  },
+  {
+    "name": "ring",
+    "description" : "A ring filled with magic powers."
+  }
+
+]

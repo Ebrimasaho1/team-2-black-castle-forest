@@ -108,19 +108,19 @@ public class Room {
         String direction4 = "";
 
         if (getDirection("north").length() > 0) {
-            direction1 = "North: " + getDirection("north") + " ";
+            direction1 = "north: " + getDirection("north") + " ";
         }
         if (getDirection("south").length() > 0) {
-            direction2 = "South: " + getDirection("south") + " ";
+            direction2 = "south: " + getDirection("south") + " ";
         }
         if (getDirection("west").length() > 0) {
-            direction3 = "West: " + getDirection("west") + " ";
+            direction3 = "west: " + getDirection("west") + " ";
         }
         if (getDirection("east").length() > 0) {
-            direction4 = "East: " + getDirection("east") + " ";
+            direction4 = "east: " + getDirection("east") + " ";
         }
 
-        return "Directions available-- " + direction1 + direction2 + direction3 + direction4;
+        return "Directions: " + direction1 + direction2 + direction3 + direction4;
 
     }
 
@@ -129,14 +129,8 @@ public class Room {
     }
 
     public String roomInfo(Character player) {
-        String npcStringDesc = "";
-        if (!npcObjects.isEmpty()){
-            for (NPC npc : npcObjects){
-                npcStringDesc = "\n" + npc.getDesc();
-            }
-        }
         return "Current Location: " + getName() + "\n" + "Player Health: " + player.getHP() + "\n" + "Description: " + getDesc() + "\n" + "Items: " + getItems() + "\n" + getValidDirections()
-                + "\n" + "NPCs: " + getNPCs()  + npcStringDesc;
+                + "\n" + "NPCs: " + getNPCs();
 
     }
 }
