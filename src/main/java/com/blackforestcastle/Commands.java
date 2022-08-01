@@ -30,10 +30,11 @@ public class Commands {
     }
 
     public void interact() {
-        System.out.println(">>" + previousCommand);
+        System.out.println("------------");
         System.out.println(player.getCurrentRoom().roomInfo(player));
         System.out.println("What would you like to do?");
         String[] input = input();
+        ConsoleUtilities.clearConsole();
         String verb = "";
         String noun = "";
         if (input.length == 1) {
@@ -51,7 +52,6 @@ public class Commands {
             case "go":
             case "move":
                 go(noun);
-                ConsoleUtilities.clearConsole();
                 break;
 
             case "bag":
@@ -106,6 +106,7 @@ public class Commands {
 
     private void use(String noun) {
         Item itemObject = player.checkInventoryForItem(noun);
+        boolean wonGame = false;
         if (itemObject != null && itemObject.getName().equals(noun)) {
             switch (noun) {
                 case "mead":
@@ -125,9 +126,10 @@ public class Commands {
                     break;
                 case "lever":
                     if (player.currentRoom.equals(rooms[0]) && itemObject.getName().equals("lever")) {
-                        System.out.println("You insert the lever into the pulley and begin to crank clockwise, the portcullis raises opening the way you got in. \n " + "You hastily escape through the entrance to freedom.");
+                        System.out.println("You insert the lever into the pulley and begin to crank clockwise, the portcullis raises opening the way you got in.\n" + "You hastily escape through the entrance to freedom.");
                         System.out.println("Congratulations you win the game!");
                         controller.quitGame();
+                        wonGame = true;
                     }
                     break;
                 case "key":
@@ -138,12 +140,12 @@ public class Commands {
 
                     }
                     break;
-
-
             }
 
             player.inventory.remove(itemObject);
-            System.out.println("Used: " + itemObject.getName());
+            if (!wonGame) {
+                System.out.println("Used: " + itemObject.getName());
+            }
         }
     }
 
@@ -218,7 +220,7 @@ public class Commands {
 
     void teleport(String room) {
         boolean hasRing = false;
-        for(Item itemObj : player.inventory) {
+        for (Item itemObj : player.inventory) {
             if (itemObj.getName().equals("ring")) {
                 hasRing = true;
                 break;
@@ -226,9 +228,9 @@ public class Commands {
         }
         for (Room roomX : rooms) {
             if (roomX.getName().toLowerCase().equals(room) && hasRing) {
-               player.setCurrentRoom(roomX);
-               System.out.println("Teleported to: " + roomX.getName());
-               break;
+                player.setCurrentRoom(roomX);
+                System.out.println("Teleported to: " + roomX.getName());
+                break;
             }
         }
     }
